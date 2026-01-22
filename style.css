@@ -1,4 +1,4 @@
-/* RESET + BASE */
+/* BASE */
 body {
   margin: 0;
   font-family: system-ui, Arial, sans-serif;
@@ -6,8 +6,9 @@ body {
   color: #e6e6e6;
 }
 
-/* HERO SECTION */
+/* HERO (REPLACE THIS BLOCK) */
 .hero {
+  position: relative;
   min-height: 100vh;
 
   background:
@@ -25,7 +26,40 @@ body {
 
   text-align: center;
   padding: 2rem;
+  overflow: hidden;
 }
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: inherit;
+  filter: blur(12px) scale(1.05);
+  z-index: 0;
+}
+
+.hero > * {
+  position: relative;
+  z-index: 1;
+}
+
+.hero h1,
+.hero p {
+  margin: 0;
+}
+
+.hero p {
+  margin-top: 0.75rem;
+}
+
+/* NORMAL CONTENT (KEEP THIS) */
+.content {
+  padding: 3rem;
+  max-width: 900px;
+  margin: auto;
+}
+
 
 .hero h1,
 .hero p {
