@@ -1,4 +1,32 @@
 body {
-  background-color: #1e1e1e; /* dark grey */
-  color: #e6e6e6;           /* soft white text */
+  margin: 0;
+  font-family: system-ui, Arial, sans-serif;
+  background: #1e1e1e;
+  color: #e6e6e6;
+}
+
+/* Full screen hero */
+.hero {
+  height: 100vh;
+  background:
+    linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+    url("background.jpg");
+  background-size: cover;
+  background-position: center;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Big title */
+.hero h1 {
+  font-size: 4rem;
+  margin: 0;
+}
+
+/* Normal page content */
+.content {
+  padding: 2rem;
 }
