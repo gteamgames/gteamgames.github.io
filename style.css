@@ -1,13 +1,4 @@
-<style>
-  body {
-    background: white;
-    color: black;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    body {
-      background: #0f0f0f;
-      color: #f5f5f5;
-    }
-  }
-</style>
+body {
+  background-color: #1e1e1e; /* dark grey */
+  color: #e6e6e6;           /* soft white text */
+}
