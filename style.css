@@ -35,7 +35,7 @@ body {
   inset: 0;
 
   background: inherit;
-  filter: blur(12px) scale(1.05);
+  filter: blur(40px) scale(1.05);
   z-index: 0;
 }
 
@@ -76,4 +76,95 @@ body {
   padding: 3rem;
   max-width: 900px;
   margin: auto;
+}
+.topbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 60px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+  z-index: 1000;
+}
+
+.topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.logo {
+  height: 36px;
+}
+
+.site-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.topbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.btn {
+  background: #4f46e5;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.user-menu {
+  position: relative;
+}
+
+.user-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: absolute;
+  right: 0;
+  top: 120%;
+  background: #111;
+  border-radius: 6px;
+  overflow: hidden;
+  display: none;
+}
+
+.dropdown button {
+  background: none;
+  border: none;
+  color: white;
+  padding: 0.6rem 1rem;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+}
+
+.dropdown button:hover {
+  background: #222;
+}
+
+.user-menu:hover .dropdown {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Push page content down so it doesn’t hide behind the topbar */
+body {
+  padding-top: 60px;
 }
