@@ -2,33 +2,96 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>GTeam Games</title>
+  <title>Login — GTeam Games</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: #1e1e1e;
+      color: #e6e6e6;
+      font-family: system-ui, Arial, sans-serif;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .box {
+      background: #2a2a2a;
+      padding: 2rem;
+      border-radius: 12px;
+      width: 100%;
+      max-width: 320px;
+      text-align: center;
+    }
+
+    input, button {
+      width: 100%;
+      padding: 0.7rem;
+      margin-top: 0.7rem;
+      border-radius: 6px;
+      border: none;
+      font-size: 1rem;
+    }
+
+    button {
+      background: #8ab4f8;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
 
-  <!-- HERO SECTION -->
-  <div class="hero">
-    <h1>Welcome to GTeam Games page on github!</h1>
-    <p>Indie games by GTeam Games.</p>
+  <div class="box">
+    <h2>Login</h2>
+
+    <input id="email" type="email" placeholder="Email">
+    <input id="password" type="password" placeholder="Password">
+
+    <button onclick="login()">Login</button>
+    <button onclick="signup()">Sign up</button>
+
+    <p id="msg"></p>
   </div>
 
-  <!-- NORMAL CONTENT -->
-  <div class="content">
-    <h2>About</h2>
-    <p>
-      All games made by GTeam will be published here and downloadable on both here and itch.io page. 
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyDuDxk-h-FQoySDWuiMYipNZSJpBv86-dY",
+    authDomain: "gteam-games.firebaseapp.com",
+    projectId: "gteam-games",
+    storageBucket: "gteam-games.firebasestorage.app",
+    messagingSenderId: "858344818483",
+    appId: "1:858344818483:web:b011f0df755d34b049e046"
+  };
 
-We are a team that loves making games, and one day we hope to become a successful Company.
+  firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
 
-Upcoming Games: CryingDead [ -Early development- ], Farming Universe [ -In development- ]
+  function login() {
+    auth.signInWithEmailAndPassword(
+      email.value,
+      password.value
+    )
+    .then(() => {
+      window.location.href = "/";
+    })
+    .catch(err => msg.textContent = err.message);
+  }
 
-And by the way, we're making some games to grow our community before releasing big games
-
-Fun Fact: GTeam is a shortened name from a few years ago (Gamepro)
-    </p>
-  </div>
-
-</body>
-</html>
+  function signup() {
+    auth.createUserWithEmailAndPassword(
+      email.value,
+      password.value
+    )
+    .then(() => {
+      window.location.href = "/";
+    })
+    .catch(err => msg.textContent = err.message);
+  }
+</script>
