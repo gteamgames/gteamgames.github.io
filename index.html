@@ -15,15 +15,17 @@
 
   <div class="topbar-right">
     <!-- Logged out -->
-    <a href="/login/" id="loginBtn" class="btn">Login / Sign Up</a>
+   <a href="/login/" id="login-btn" class="btn">Login / Sign Up</a>
 
-    <!-- Logged in -->
-    <div id="userMenu" class="user-menu hidden">
-      <button id="userBtn" class="user-btn">User</button>
-      <div class="dropdown">
-        <button id="logoutBtn">Logout</button>
-      </div>
-    </div>
+<div id="user-menu" class="user-menu" style="display:none;">
+  <button class="user-btn">
+    <span id="username">User</span>
+  </button>
+  <div class="dropdown">
+    <button onclick="logout()">Logout</button>
+  </div>
+</div>
+
   </div>
 </header>
 
@@ -48,7 +50,7 @@ And by the way, we're making some games to grow our community before releasing b
 Fun Fact: GTeam is a shortened name from a few years ago (Gamepro)
     </p>
   </div>
-<script type="module" src="/auth.js"></script>
 
+<script type="module" src="/auth.js"></script>
 </body>
 </html>
