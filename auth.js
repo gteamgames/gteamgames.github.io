@@ -44,13 +44,32 @@ onAuthStateChanged(auth, (user) => {
 });
 
 // 🔑 Login
-window.login = () => {
+import {
+  getFirestore,
+  doc,
+  setDoc
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+const db = getFirestore(app);
+
+window.signup = async () => {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
 
-  signInWithEmailAndPassword(auth, email, password)
-    .then(() => window.location.href = "/")
-    .catch(err => alert(err.message));
+  try {
+    const cred = await createUserWithEmailAndPassword(auth, email, password);
+
+    // 👇 STORE USER DATA
+    await setDoc(doc(db, "users", cred.user.uid), {
+      email: email,
+      role: "user",
+      createdAt: Date.now()
+    });
+
+    window.location.href = "/";
+  } catch (err) {
+    alert(err.message);
+  }
 };
 
 // ✍️ Signup
