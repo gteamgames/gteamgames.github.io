@@ -1,0 +1,25 @@
+body {
+  margin: 0;
+  padding: 2rem;
+  background: #1e1e1e;
+  color: #e6e6e6;
+  font-family: system-ui, Arial, sans-serif;
+}
+
+h1 {
+  margin-bottom: 0.5rem;
+}
+
+#users {
+  margin-top: 1.5rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.user {
+  background: #2a2a2a;
+  padding: 1rem;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+}
