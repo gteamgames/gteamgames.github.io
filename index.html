@@ -55,34 +55,7 @@ Fun Fact: GTeam is a shortened name from a few years ago (Gamepro)
   
 <div id="games"></div>
 
-<script>
-fetch("https://api.allorigins.win/get?url=" + encodeURIComponent("https://itch.io/profile/gteam-games/feed"))
-  .then(res => res.json())
-  .then(data => {
-    const parser = new DOMParser();
-    const xml = parser.parseFromString(data.contents, "text/xml");
-
-    const items = xml.querySelectorAll("item");
-    let html = "<div class='game-grid'>";
-
-    items.forEach(item => {
-      const title = item.querySelector("title").textContent;
-      const link = item.querySelector("link").textContent;
-      const desc = item.querySelector("description")?.textContent || "";
-
-      html += `
-        <div class="game-card">
-          <h3>${title}</h3>
-          <p>${desc.substring(0, 100)}...</p>
-          <a href="${link}" target="_blank" class="btn">Play</a>
-        </div>
-      `;
-    });
-
-    html += "</div>";
-    document.getElementById("games").innerHTML = html;
-  });
-</script>
+<iframe src="https://itch.io/embed/platformaz" width="552" height="167" frameborder="0"></iframe>
   
 <script type="module" src="/auth.js"></script>
 </body>
