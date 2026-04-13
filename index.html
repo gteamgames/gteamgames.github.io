@@ -53,6 +53,29 @@ Fun Fact: GTeam is a shortened name from a few years ago (Gamepro)
 <a href="gteam-online-tools/" id="online-tools-btn" class="btn">GTeam Online Tools</a>
 </a>
   
+<div id="games"></div>
+
+<script>
+fetch("https://api.allorigins.win/get?url=" + encodeURIComponent("https://itch.io/profile/YOUR_USERNAME/feed"))
+  .then(res => res.json())
+  .then(data => {
+    const parser = new DOMParser();
+    const xml = parser.parseFromString(data.contents, "text/xml");
+
+    const items = xml.querySelectorAll("item");
+    let html = "";
+
+    items.forEach(item => {
+      const title = item.querySelector("title").textContent;
+      const link = item.querySelector("link").textContent;
+
+      html += `<p><a href="${link}" target="_blank">${title}</a></p>`;
+    });
+
+    document.getElementById("games").innerHTML = html;
+  });
+</script>
+  
 <script type="module" src="/auth.js"></script>
 </body>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7661245359019554"
