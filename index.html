@@ -63,15 +63,23 @@ fetch("https://api.allorigins.win/get?url=" + encodeURIComponent("https://itch.i
     const xml = parser.parseFromString(data.contents, "text/xml");
 
     const items = xml.querySelectorAll("item");
-    let html = "";
+    let html = "<div class='game-grid'>";
 
     items.forEach(item => {
       const title = item.querySelector("title").textContent;
       const link = item.querySelector("link").textContent;
+      const desc = item.querySelector("description")?.textContent || "";
 
-      html += `<p><a href="${link}" target="_blank">${title}</a></p>`;
+      html += `
+        <div class="game-card">
+          <h3>${title}</h3>
+          <p>${desc.substring(0, 100)}...</p>
+          <a href="${link}" target="_blank" class="btn">Play</a>
+        </div>
+      `;
     });
 
+    html += "</div>";
     document.getElementById("games").innerHTML = html;
   });
 </script>
