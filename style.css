@@ -182,6 +182,15 @@ html {
   font-weight: 500;
 }
 
+.online-tools-bth {
+  background: #4f46e5;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
 .privacybtn {
   background: #4f46e5;
   color: white;
