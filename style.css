@@ -1,206 +1,392 @@
-/* BASE */
+/* GTEAM GAMES · MAIN STYLESHEET */
+
+:root {
+  color-scheme: dark;
+  --bg: #101214;
+  --surface: rgba(255, 255, 255, 0.055);
+  --surface-hover: rgba(255, 255, 255, 0.10);
+  --border: rgba(255, 255, 255, 0.12);
+  --text: #f4f7f8;
+  --muted: #a9b2ba;
+  --accent: #36f5e5;
+  --accent-blue: #4f46e5;
+  --radius: 20px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scrollbar-gutter: stable;
+  scroll-behavior: smooth;
+  scroll-padding-top: 85px;
+}
+
 body {
   margin: 0;
+  padding-top: 60px;
   font-family: system-ui, Arial, sans-serif;
-  background: #1e1e1e;
-  color: #e6e6e6;
-}
-
-/* HERO (REPLACE THIS BLOCK) */
-.hero {
-  position: relative;
-  min-height: 100vh;
-
   background:
-    linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-    url("background_gteamgames_page.png");
-
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  text-align: center;
-  padding: 2rem;
-  overflow: hidden;
+    radial-gradient(ellipse at 50% 0%, #142a30 0%, transparent 55%),
+    var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+  overflow-x: hidden;
 }
 
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-
-  background: inherit;
-  filter: blur(40px) scale(1.05);
-  z-index: 0;
+a {
+  color: inherit;
 }
 
-.hero > * {
-  position: relative;
-  z-index: 1;
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
 }
 
-.hero h1,
-.hero p {
-  margin: 0;
+button {
+  font: inherit;
 }
 
-.hero p {
-  margin-top: 0.75rem;
-}
+/* NAVIGATION */
 
-/* NORMAL CONTENT (KEEP THIS) */
-.content {
-  padding: 3rem;
-  max-width: 900px;
-  margin: auto;
-}
-
-
-.hero h1,
-.hero p {
-  margin: 0;
-}
-
-.hero p {
-  margin-top: 0.75rem;
-}
-
-
-/* NORMAL PAGE CONTENT */
-.content {
-  padding: 3rem;
-  max-width: 900px;
-  margin: auto;
-}
 .topbar {
   position: fixed;
-  top: 0;
-  width: 100%;
-  height: 60px;
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(8px);
+  inset: 0 0 auto;
+  z-index: 1000;
+  min-height: 60px;
+  padding: 0 5%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 1.5rem;
-  z-index: 1000;
+  gap: 16px;
+  background: rgba(13, 16, 19, 0.78);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
 }
 
 .topbar-left {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 12px;
+  min-width: 0;
 }
 
 .logo {
+  width: 36px;
   height: 36px;
+  object-fit: contain;
 }
 
 .site-name {
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-size: 1.05rem;
+  font-weight: 750;
+  letter-spacing: -0.4px;
 }
 
 .topbar-right {
   display: flex;
   align-items: center;
+  gap: 12px;
 }
 
-.btn {
-  background: #4f46e5;
-  color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 10px;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.user-menu {
+#user-menu {
   position: relative;
 }
 
 .user-btn {
-  background: none;
-  border: none;
-  color: white;
-  font-size: 0.95rem;
+  padding: 8px 14px;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
   cursor: pointer;
 }
 
 .dropdown {
   position: absolute;
+  top: calc(100% + 10px);
   right: 0;
-  top: 120%;
-  background: #111;
-  border-radius: 6px;
-  overflow: hidden;
+  min-width: 140px;
+  padding: 5px;
+  background: #191e22;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: 0 16px 40px #0007;
   display: none;
 }
 
+#user-menu:hover .dropdown,
+#user-menu:focus-within .dropdown {
+  display: block;
+}
+
 .dropdown button {
-  background: none;
-  border: none;
-  color: white;
-  padding: 0.6rem 1rem;
   width: 100%;
+  padding: 10px 12px;
+  color: var(--text);
+  background: transparent;
+  border: 0;
+  border-radius: 9px;
   text-align: left;
   cursor: pointer;
 }
 
 .dropdown button:hover {
-  background: #222;
+  background: var(--surface-hover);
 }
 
-.user-menu:hover .dropdown {
-  display: block;
+/* BUTTONS */
+
+.btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 18px;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  text-decoration: none;
+  font-weight: 650;
+  transition:
+    background 180ms ease,
+    border-color 180ms ease,
+    transform 180ms ease;
 }
 
-.hidden {
-  display: none;
-}
-
-/* Push page content down so it doesn’t hide behind the topbar */
-body {
-  padding-top: 60px;
-}
-
-html {
-  scrollbar-gutter: stable;
-}
-
-button {
-  background: #222;
-  color: grey;
-  padding: 12px 24px;
-  border: none;
-  border-top: 3px solid #555;
-  border-bottom: 3px solid #111;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-button:hover {
-  background: #333;
+.btn:hover {
+  background: var(--surface-hover);
+  border-color: rgba(54, 245, 229, 0.55);
   transform: translateY(-2px);
 }
 
-button:active {
-  transform: translateY(1px);
-  border-top-color: #111;
-  border-bottom-color: #555;
+#login-btn {
+  background: rgba(54, 245, 229, 0.12);
+  border-color: rgba(54, 245, 229, 0.35);
 }
 
-. {
-  background: #4f46e5;
-  color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 10px;
-  text-decoration: none;
-  font-weight: 500;
+#login-btn:hover {
+  background: rgba(54, 245, 229, 0.2);
+}
+
+/* HERO */
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  min-height: min(760px, calc(100svh - 60px));
+  padding: 120px 24px 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(7, 12, 15, 0.48),
+      rgba(7, 12, 15, 0.68) 65%,
+      var(--bg)
+    ),
+    url("background_gteamgames_page.png") center / cover no-repeat;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -30px;
+  background: url("background_gteamgames_page.png") center / cover no-repeat;
+  filter: blur(28px);
+  opacity: 0.3;
+  transform: scale(1.08);
+  pointer-events: none;
+}
+
+.hero h1 {
+  max-width: 950px;
+  margin: 0;
+  font-size: clamp(2.5rem, 7vw, 5.8rem);
+  line-height: 1.04;
+  letter-spacing: -0.065em;
+  font-weight: 850;
+  text-wrap: balance;
+  text-shadow: 0 8px 50px #0008;
+}
+
+.hero p {
+  max-width: 620px;
+  margin: 24px 0 0;
+  color: #e0e9ec;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  text-wrap: balance;
+}
+
+/* ABOUT */
+
+.content {
+  width: min(100% - 40px, 900px);
+  margin: 0 auto;
+  padding: 60px 0;
+}
+
+.content h2,
+#games h2 {
+  margin: 0 0 18px;
+  font-size: clamp(1.7rem, 4vw, 2.4rem);
+  letter-spacing: -0.04em;
+}
+
+.content p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.9;
+}
+
+/* PROJECT LINKS */
+
+.btn-grid {
+  width: min(100% - 40px, 1100px);
+  margin: 0 auto 70px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.btn-grid .btn {
+  min-height: 100px;
+  justify-content: flex-start;
+  padding: 24px;
+  background:
+    linear-gradient(135deg, rgba(54, 245, 229, 0.065), transparent 65%),
+    var(--surface);
+  border-radius: var(--radius);
+  font-size: 1.05rem;
+}
+
+.btn-grid .btn:hover {
+  background:
+    linear-gradient(135deg, rgba(54, 245, 229, 0.13), transparent 65%),
+    var(--surface-hover);
+}
+
+/* GAMES */
+
+#games {
+  width: min(100% - 40px, 1100px);
+  margin: 0 auto 36px;
+}
+
+#games > iframe {
+  display: block;
+  width: 100%;
+  max-width: 552px;
+  min-height: 167px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.game-grid {
+  width: min(100% - 40px, 1100px);
+  margin: 0 auto 80px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+}
+
+.game-grid iframe {
+  display: block;
+  width: 100%;
+  max-width: 300px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+/* FOOTER */
+
+footer {
+  padding: 35px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.025);
+  border-top: 1px solid var(--border);
+}
+
+footer .btn {
+  font-size: 0.9rem;
+}
+
+/* ACCESSIBILITY */
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+@media (max-width: 700px) {
+  .topbar {
+    padding: 0 16px;
+  }
+
+  .site-name {
+    font-size: 0.95rem;
+  }
+
+  #login-btn {
+    padding: 9px 12px;
+    font-size: 0.85rem;
+  }
+
+  .hero {
+    min-height: 68svh;
+    padding: 100px 22px 80px;
+  }
+
+  .content {
+    padding: 42px 0;
+  }
+
+  .btn-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 55px;
+  }
+
+  .btn-grid .btn {
+    min-height: 75px;
+    padding: 20px;
+  }
+
+  #games,
+  .game-grid {
+    margin-bottom: 28px;
+  }
+
+  .game-grid {
+    grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
 }
